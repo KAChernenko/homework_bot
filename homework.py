@@ -28,12 +28,12 @@ HOMEWORK_VERDICTS = {
 
 
 def check_tokens():
-    """Проверка на наличие всех переменных окружения"""
+    """Проверка на наличие всех переменных окружения."""
     return all([PRACTICUM_TOKEN, TELEGRAM_TOKEN, TELEGRAM_CHAT_ID])
 
 
 def send_message(bot, message):
-    """Отправка сообщений"""
+    """Отправка сообщений."""
     try:
         bot.send_message(TELEGRAM_CHAT_ID, message)
         logging.debug("Отправили сообщение через бота")
@@ -42,7 +42,7 @@ def send_message(bot, message):
 
 
 def get_api_answer(current_timestamp):
-    """Получение статуса домашней работы"""
+    """Получение статуса домашней работы."""
     timestamp = current_timestamp or int(time.time())
     params_request = {
         'url': ENDPOINT,
@@ -79,7 +79,7 @@ def check_response(response):
     homeworks = response.get('homeworks')
     if not isinstance(homeworks, list):
         raise TypeError('Homeworks не является списком')
-    return homeworks 
+    return homeworks
 
 
 def parse_status(homework):
@@ -146,7 +146,6 @@ def main():
 
         finally:
             time.sleep(RETRY_PERIOD)
-
 
 
 if __name__ == '__main__':
