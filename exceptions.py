@@ -19,10 +19,10 @@ class NotForSending(Exception):
 
 
 class EmptyResponseFromAPI(Exception):
-    """Пустой ответ от API"""
+    """Пустой ответ от API."""
     pass
 
 
-class TelegramError(Exception):
-    "Ошибка отправки"
+class TelegramError(NotForSending):
+    "Ошибка отправки."
     pass

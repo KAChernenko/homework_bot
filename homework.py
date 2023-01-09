@@ -35,10 +35,14 @@ def check_tokens():
 def send_message(bot, message):
     """Отправка сообщений."""
     try:
-        bot.send_message(TELEGRAM_CHAT_ID, message)
-        logging.debug("Отправили сообщение через бота")
-    except Exception as error:
+        bot.send_message(
+            chat_id=TELEGRAM_CHAT_ID,
+            text=message,
+        )
+        logging.debug('Отправили сообщение через бота')
+    except telegram.TelegramError as error:
         logging.error(f"Не удалось отправить сообщение через бота{error}")
+
 
 
 def get_api_answer(current_timestamp):
@@ -88,7 +92,6 @@ def parse_status(homework):
         homework_name = homework['homework_name']
     except KeyError as key_error:
         message = f'Ошибка доступа по ключу homework_name: {key_error}'
-        logging.error(message)
         raise KeyError(message)
     homework_status = homework.get('status')
     if homework_status not in HOMEWORK_VERDICTS:
