@@ -95,12 +95,10 @@ def parse_status(homework):
     homework_status = homework.get('status')
     if homework_status not in HOMEWORK_VERDICTS:
         message = 'Ошибка доступа по ключу status'
-        logging.error(message)
         raise KeyError(message)
     verdict = HOMEWORK_VERDICTS[homework_status]
     if verdict is None:
         message = 'Статус домашней работы неизвестен'
-        logging.error(message)
         raise Exception(message)
     return f'Изменился статус проверки работы "{homework_name}". {verdict}'
 
