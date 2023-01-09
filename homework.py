@@ -44,7 +44,6 @@ def send_message(bot, message):
         logging.error(f"Не удалось отправить сообщение через бота{error}")
 
 
-
 def get_api_answer(current_timestamp):
     """Получение статуса домашней работы."""
     timestamp = current_timestamp or int(time.time())
